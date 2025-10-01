@@ -6,7 +6,7 @@ import { IoMdNotificationsOutline } from "react-icons/io";
 import { FiMenu } from "react-icons/fi";
 
 export default function TopBar() {
-  
+
   const [adminInfo, setAdminInfo] = useState({})
   const [notifications, setNotifications] = useState([])
   const [isShowNotify, setIsShowNotify] = useState(false)
@@ -30,7 +30,7 @@ export default function TopBar() {
 
 
   return (
-    <div className="px-4 w-10/12 fixed  top-0 left-0 p-2 bg-gray-300 pb-7 bg-gradient-to-l from-gray-300 via-gray-300 to-gray-400 ">
+    <div className="px-4 w-10/12 fixed  top-0 left-0 p-2 bg-gray-300 pb-7 bg-gradient-to-l from-gray-300 via-gray-300 to-gray-400 z-50">
       <div className="flex justify-between items-center mt-5">
 
         <div className="flex items-center relative">
@@ -69,10 +69,11 @@ export default function TopBar() {
                 ) : (
                   <>
                     {
-                      notifications.map(notify => (
+                      notifications.map((notify, index) => (
 
                         <li
                           className="flex items-center justify-between border-b border-gray-300 p-2.5"
+                          key={index}
                         >
                           <span className="text-[13px] text-[#313131]">{notify}</span>
 
@@ -100,17 +101,17 @@ export default function TopBar() {
 
 
         <div>
-          <div class="flex flex-row-reverse items-center gap-1">
-            <div class="ml-2">
+          <div className="flex flex-row-reverse items-center gap-1">
+            <div className="ml-2">
               <a href="#">
                 <MdAccountCircle className='size-13' />
               </a>
             </div>
-            <div class="ml-2">
-              <a href="#" class="text-[13px] text-[#313131]">{adminInfo.name}</a>
+            <div className="ml-2">
+              <a href="#" className="text-[13px] text-[#313131]">{adminInfo.name}</a>
             </div>
-            <div class="ml-1 flex items-center justify-center">
-              <i class="fas fa-angle-down text-[#313131]"></i>
+            <div className="ml-1 flex items-center justify-center">
+              <i className="fas fa-angle-down text-[#313131]"></i>
             </div>
           </div>
         </div>

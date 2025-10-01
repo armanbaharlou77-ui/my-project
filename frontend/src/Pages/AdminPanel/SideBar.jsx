@@ -27,90 +27,90 @@ export default function SideBar() {
     }
 
     return (
-        <div id="sidebar" class="fixed right-0 top-0 w-2/12 h-full bg-[#17203f]">
-            <div class="flex items-center justify-between border-b border-gray-500/60">
-                <div class="p-5.5">
+        <div id="sidebar" className="fixed right-0 top-0 w-2/12 h-full bg-[#17203f]">
+            <div className="flex items-center justify-between border-b border-gray-500/60">
+                <div className="p-5.5">
                     <a href="#">
-                        <img src="/images/logo/Logo.png" alt="Logo" class="w-[70px]" />
+                        <img src="/images/logo/Logo.png" alt="Logo" className="w-[70px]" />
                     </a>
                 </div>
-                <div class="p-4">
-                    <i class="fas fa-bars text-white text-lg cursor-pointer"></i>
+                <div className="p-4">
+                    <i className="fas fa-bars text-white text-lg cursor-pointer"></i>
                 </div>
             </div>
 
 
-            <div class="mt-10">
+            <div className="mt-10">
                 <ul>
                     <li
-                        class="relative bg-gradient-to-r from-[#353c50] to-transparent active"
+                        className="relative bg-gradient-to-r from-[#353c50] to-transparent active"
                     >
                         <Link
                             to="/admin-p"
-                            class="block px-6 py-4 text-white text-[15px] transition-colors"
+                            className="block px-6 py-4 text-white text-[15px] transition-colors"
                         >
                             <span>صفحه اصلی</span>
                         </Link>
-                        <span class="absolute top-0 left-0 h-full w-[5px] bg-[#4869ff]"></span>
+                        <span className="absolute top-0 left-0 h-full w-[5px] bg-[#4869ff]"></span>
                     </li>
 
-                    <li class="hover:bg-gradient-to-r hover:from-[#353c50] hover:to-transparent">
+                    <li className="hover:bg-gradient-to-r hover:from-[#353c50] hover:to-transparent">
                         <Link
                             to="courses"
-                            class="block px-6 py-4 text-[#8c90a0] hover:text-white text-[15px] transition-colors"
+                            className="block px-6 py-4 text-[#8c90a0] hover:text-white text-[15px] transition-colors"
                         >
                             <span>دوره ها</span>
                         </Link>
                     </li>
 
-                    <li class="hover:bg-gradient-to-r hover:from-[#353c50] hover:to-transparent">
+                    <li className="hover:bg-gradient-to-r hover:from-[#353c50] hover:to-transparent">
                         <Link
                             to="menus"
-                            class="block px-6 py-4 text-[#8c90a0] hover:text-white text-[15px] transition-colors"
+                            className="block px-6 py-4 text-[#8c90a0] hover:text-white text-[15px] transition-colors"
                         >
                             <span>منو ها</span>
                         </Link>
                     </li>
 
-                    <li class="hover:bg-gradient-to-r hover:from-[#353c50] hover:to-transparent">
+                    <li className="hover:bg-gradient-to-r hover:from-[#353c50] hover:to-transparent">
                         <Link
                             to="articles"
-                            class="block px-6 py-4 text-[#8c90a0] hover:text-white text-[15px] transition-colors"
+                            className="block px-6 py-4 text-[#8c90a0] hover:text-white text-[15px] transition-colors"
                         >
                             <span>مقاله ها</span>
                         </Link>
                     </li>
 
-                    <li class="hover:bg-gradient-to-r hover:from-[#353c50] hover:to-transparent">
+                    <li className="hover:bg-gradient-to-r hover:from-[#353c50] hover:to-transparent">
                         <Link
                             to="#"
-                            class="block px-6 py-4 text-[#8c90a0] hover:text-white text-[15px] transition-colors"
+                            className="block px-6 py-4 text-[#8c90a0] hover:text-white text-[15px] transition-colors"
                         >
                             <span>کاربران</span>
                         </Link>
                     </li>
 
-                    <li class="hover:bg-gradient-to-r hover:from-[#353c50] hover:to-transparent">
+                    <li className="hover:bg-gradient-to-r hover:from-[#353c50] hover:to-transparent">
                         <Link
                             to="#"
-                            class="block px-6 py-4 text-[#8c90a0] hover:text-white text-[15px] transition-colors"
+                            className="block px-6 py-4 text-[#8c90a0] hover:text-white text-[15px] transition-colors"
                         >
                             <span>کدهای تخفیف</span>
                         </Link>
                     </li>
 
-                    <li class="hover:bg-gradient-to-r hover:from-[#353c50] hover:to-transparent">
+                    <li className="hover:bg-gradient-to-r hover:from-[#353c50] hover:to-transparent">
                         <Link
                             to=""
-                            class="block px-6 py-4 text-[#8c90a0] hover:text-white text-[15px] transition-colors"
+                            className="block px-6 py-4 text-[#8c90a0] hover:text-white text-[15px] transition-colors"
                         >
                             <span>دسته‌بندی‌ها</span>
                         </Link>
                     </li>
-                    <li class="hover:bg-gradient-to-r hover:from-[#353c50] hover:to-transparent">
+                    <li className="hover:bg-gradient-to-r hover:from-[#353c50] hover:to-transparent">
                         <Link
                             to=""
-                            class="block px-6 py-4 text-[#8c90a0] hover:text-white text-[15px] transition-colors"
+                            className="block px-6 py-4 text-[#8c90a0] hover:text-white text-[15px] transition-colors"
                             onClick={logoutHandler}
                         >
                             <span>خروج</span>

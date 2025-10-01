@@ -8,6 +8,14 @@ export default function Users() {
 
 
     useEffect(() => {
+
+        refreshUsers()
+
+    }, [])
+
+
+    const refreshUsers = () => {
+
         const localStorageData = JSON.parse(localStorage.getItem('user'))
 
         fetch('http://localhost:4000/v1/users', {
@@ -16,10 +24,10 @@ export default function Users() {
             }
         }).then(res => res.json())
             .then(data => {
-                console.log(data)
+
                 setUsers(data)
             })
-    }, [])
+    }
 
     const removeUser = (userID) => {
         swal({
@@ -27,26 +35,58 @@ export default function Users() {
             icon: 'warning',
             buttons: ['خیر', 'بله']
         }).then(res => {
+
             const localStorageData = JSON.parse(localStorage.getItem('user'))
 
             if (res) {
-                swal({
-                    title: 'حذف با موفقیت انجام شد',
-                    icon: 'success',
-                    buttons: 'تایید'
-                })
-            }
-            fetch(`http://localhost:4000/v1/users/${userID}`, {
-                headers: {
-                    'Authorization': `Bearer ${localStorageData.token}`
-                }
-            }, []).then(res => res.json())
-                .then(result => {
-                    console.log(result);
+                fetch(`http://localhost:4000/v1/users/${userID}`, {
+                    method: 'DELETE',
+                    headers: {
+                        'Authorization': `Bearer ${localStorageData.token}`
+                    }
+                }, []).then(res => res.json())
+                    .then(result => {
+                        console.log(result);
 
-                })
+                        swal({
+                            title: 'حذف با موفقیت انجام شد',
+                            icon: 'success',
+                            buttons: 'تایید'
+                        }).then(res => refreshUsers())
+                    })
+            }
         })
 
+
+    }
+
+    const banUser = (userID) => {
+        swal({
+            title: 'آیا از مسدود کردن مطمئنید؟',
+            icon: 'warning',
+            buttons: ['خیر', 'بله']
+        }).then(res => {
+
+            const localStorageData = JSON.parse(localStorage.getItem('user'))
+
+            if (res) {
+                fetch(`http://localhost:4000/v1/users/ban/${userID}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Authorization': `Bearer ${localStorageData.token}`
+                    }
+                }, []).then(res => res.json())
+                    .then(result => {
+                        console.log(result);
+
+                        swal({
+                            title: 'مسدود شدن با موفقیت انجام شد',
+                            icon: 'success',
+                            buttons: 'تایید'
+                        })
+                    })
+            }
+        })
 
     }
 
@@ -70,7 +110,7 @@ export default function Users() {
                 <tbody>
                     {
                         users.map((user, index) => (
-                            <tr className="border-t">
+                            <tr className="border-t" key={user._id}>
                                 <td className="px-4 py-2 text-center text-sm">{index + 1}</td>
                                 <td className="px-4 py-2 text-center text-sm">{user.name}</td>
 
@@ -82,13 +122,13 @@ export default function Users() {
                                         ویرایش
                                     </button>
                                 </td>
-                                <td className="px-4 py-2 text-center" onClick={() => removeUser(user._id)}>
-                                    <button className="bg-red-600 hover:bg-red-700 text-white text-[1.1rem] px-3 py-1 rounded-md transition">
+                                <td className="px-4 py-2 text-center" >
+                                    <button className="bg-red-600 hover:bg-red-700 text-white text-[1.1rem] px-3 py-1 rounded-md transition" onClick={() => removeUser(user._id)}>
                                         حذف
                                     </button>
                                 </td>
                                 <td className="px-4 py-2 text-center">
-                                    <button className="bg-orange-400 hover:bg-orange-500 text-white text-[1.1rem] px-3 py-1 rounded-md transition">
+                                    <button className="bg-orange-400 hover:bg-orange-500 text-white text-[1.1rem] px-3 py-1 rounded-md transition" onClick={() => banUser(user._id)}>
                                         مسدود
                                     </button>
                                 </td>
