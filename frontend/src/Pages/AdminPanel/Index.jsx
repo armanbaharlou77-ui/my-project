@@ -13,7 +13,7 @@ export default function Index() {
                     <TopBar />
 
                     {/* محتوا */}
-                    <main className="flex-1 p-4 bg-white overflow-auto">
+                    <main className=" container mx-auto scale-105 mt-48">
                         <Outlet />
                     </main>
                 </div>

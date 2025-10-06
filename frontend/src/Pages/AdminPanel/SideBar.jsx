@@ -83,7 +83,7 @@ export default function SideBar() {
 
                     <li className="hover:bg-gradient-to-r hover:from-[#353c50] hover:to-transparent">
                         <Link
-                            to="#"
+                            to="users"
                             className="block px-6 py-4 text-[#8c90a0] hover:text-white text-[15px] transition-colors"
                         >
                             <span>کاربران</span>
@@ -101,7 +101,7 @@ export default function SideBar() {
 
                     <li className="hover:bg-gradient-to-r hover:from-[#353c50] hover:to-transparent">
                         <Link
-                            to=""
+                            to="category"
                             className="block px-6 py-4 text-[#8c90a0] hover:text-white text-[15px] transition-colors"
                         >
                             <span>دسته‌بندی‌ها</span>

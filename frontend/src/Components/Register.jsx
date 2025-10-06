@@ -1,4 +1,4 @@
-import { useState, useContext, use } from 'react';
+import { useState, useContext, use, useEffect } from 'react';
 import { FaUser, FaLock, FaEye, FaEyeSlash, FaEnvelope, FaPhone } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import Button from './Button';
@@ -104,6 +104,8 @@ const PersianSignupForm = () => {
           })
 
         })
+
+
 
     } else {
       alert('fill all the blanks currectly !!')
