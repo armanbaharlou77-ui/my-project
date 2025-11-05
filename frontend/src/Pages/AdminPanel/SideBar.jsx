@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useContext } from 'react'
 import AuthContext from '../../Context/AuthContext'
@@ -10,6 +10,7 @@ export default function SideBar() {
 
     const context = useContext(AuthContext)
     const navigate = useNavigate()
+    const [sidebarSelect, setSidebarSelect] = useState('main')
 
 
     const logoutHandler = event => {
@@ -43,78 +44,92 @@ export default function SideBar() {
             <div className="mt-10">
                 <ul>
                     <li
-                        className="relative bg-gradient-to-r from-[#353c50] to-transparent active"
-                    >
+                        className={`${sidebarSelect === 'main' ? "relative bg-gradient-to-r from-[#353c50] to-transparent active" : ''} hover:bg-gradient-to-r hover:from-[#353c50] hover:to-transparent`}>
                         <Link
                             to="/admin-p"
                             className="block px-6 py-4 text-white text-[15px] transition-colors"
+                            onClick={() => setSidebarSelect('main')}
                         >
                             <span>صفحه اصلی</span>
                         </Link>
-                        <span className="absolute top-0 left-0 h-full w-[5px] bg-[#4869ff]"></span>
+                        <span className={`${sidebarSelect === 'main' ? "absolute top-0 left-0 h-full w-[5px] bg-[#4869ff]" : ''}`}></span>
                     </li>
 
-                    <li className="hover:bg-gradient-to-r hover:from-[#353c50] hover:to-transparent">
+                    <li className={`${sidebarSelect === 'courses' ? "relative bg-gradient-to-r from-[#353c50] to-transparent active" : ''} hover:bg-gradient-to-r hover:from-[#353c50] hover:to-transparent`}>
                         <Link
                             to="courses"
-                            className="block px-6 py-4 text-[#8c90a0] hover:text-white text-[15px] transition-colors"
+                            className={`block px-6 py-4 text-[#8c90a0] hover:text-white text-[15px] transition-colors`}
+                            onClick={() => setSidebarSelect('courses')}
                         >
                             <span>دوره ها</span>
                         </Link>
+                        <span className={`${sidebarSelect === 'courses' ? "absolute top-0 left-0 h-full w-[5px] bg-[#4869ff]" : ''}`}></span>
                     </li>
 
-                    <li className="hover:bg-gradient-to-r hover:from-[#353c50] hover:to-transparent">
+                    <li className={`${sidebarSelect === 'menus' ? "relative bg-gradient-to-r from-[#353c50] to-transparent active" : ''} hover:bg-gradient-to-r hover:from-[#353c50] hover:to-transparent`}>
                         <Link
                             to="menus"
                             className="block px-6 py-4 text-[#8c90a0] hover:text-white text-[15px] transition-colors"
+                            onClick={() => setSidebarSelect('menus')}
                         >
                             <span>منو ها</span>
                         </Link>
+                        <span className={`${sidebarSelect === 'menus' ? "absolute top-0 left-0 h-full w-[5px] bg-[#4869ff]" : ''}`}></span>
                     </li>
 
-                    <li className="hover:bg-gradient-to-r hover:from-[#353c50] hover:to-transparent">
+                    <li className={`${sidebarSelect === 'articles' ? "relative bg-gradient-to-r from-[#353c50] to-transparent active" : ''} hover:bg-gradient-to-r hover:from-[#353c50] hover:to-transparent`}>
                         <Link
                             to="articles"
                             className="block px-6 py-4 text-[#8c90a0] hover:text-white text-[15px] transition-colors"
+                            onClick={() => setSidebarSelect('articles')}
                         >
                             <span>مقاله ها</span>
                         </Link>
+                        <span className={`${sidebarSelect === 'articles' ? "absolute top-0 left-0 h-full w-[5px] bg-[#4869ff]" : ''}`}></span>
                     </li>
 
-                    <li className="hover:bg-gradient-to-r hover:from-[#353c50] hover:to-transparent">
+                    <li className={`${sidebarSelect === 'users' ? "relative bg-gradient-to-r from-[#353c50] to-transparent active" : ''} hover:bg-gradient-to-r hover:from-[#353c50] hover:to-transparent`}>
                         <Link
                             to="users"
                             className="block px-6 py-4 text-[#8c90a0] hover:text-white text-[15px] transition-colors"
+                            onClick={() => setSidebarSelect('users')}
                         >
                             <span>کاربران</span>
                         </Link>
+                        <span className={`${sidebarSelect === 'users' ? "absolute top-0 left-0 h-full w-[5px] bg-[#4869ff]" : ''}`}></span>
                     </li>
 
-                    <li className="hover:bg-gradient-to-r hover:from-[#353c50] hover:to-transparent">
+                    <li className={`${sidebarSelect === 'off' ? "relative bg-gradient-to-r from-[#353c50] to-transparent active" : ''} hover:bg-gradient-to-r hover:from-[#353c50] hover:to-transparent`}>
                         <Link
-                            to="#"
+                            to="off"
                             className="block px-6 py-4 text-[#8c90a0] hover:text-white text-[15px] transition-colors"
+                            onClick={() => setSidebarSelect('off')}
                         >
                             <span>کدهای تخفیف</span>
                         </Link>
+                        <span className={`${sidebarSelect === 'off' ? "absolute top-0 left-0 h-full w-[5px] bg-[#4869ff]" : ''}`}></span>
                     </li>
 
-                    <li className="hover:bg-gradient-to-r hover:from-[#353c50] hover:to-transparent">
+                    <li className={`${sidebarSelect === 'category' ? "relative bg-gradient-to-r from-[#353c50] to-transparent active" : ''} hover:bg-gradient-to-r hover:from-[#353c50] hover:to-transparent`}>
                         <Link
                             to="category"
                             className="block px-6 py-4 text-[#8c90a0] hover:text-white text-[15px] transition-colors"
+                            onClick={() => setSidebarSelect('category')}
                         >
                             <span>دسته‌بندی‌ها</span>
                         </Link>
+                        <span className={`${sidebarSelect === 'category' ? "absolute top-0 left-0 h-full w-[5px] bg-[#4869ff]" : ''}`}></span>
                     </li>
-                    <li className="hover:bg-gradient-to-r hover:from-[#353c50] hover:to-transparent">
+                    <li className='hover:bg-gradient-to-r hover:from-[#353c50] hover:to-transparent'>
                         <Link
                             to=""
                             className="block px-6 py-4 text-[#8c90a0] hover:text-white text-[15px] transition-colors"
+
                             onClick={logoutHandler}
                         >
                             <span>خروج</span>
                         </Link>
+
                     </li>
                 </ul>
             </div>

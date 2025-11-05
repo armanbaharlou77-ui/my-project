@@ -64,8 +64,6 @@ export default function Category() {
         }
 
         )
-
-
     }
 
     const addCategory = (event) => {
@@ -97,11 +95,41 @@ export default function Category() {
 
 
                 })
-
         }
+    }
 
-
-
+    const updateCategory = (id) => {
+        swal({
+            title: 'نام دسته بندی جدید را وارد کنید',
+            content: 'input',
+            
+            buttons: 'ثبت عنوان جدید'
+        }).then(result => {
+            if (result.trim().length) {
+                const localStorageData = JSON.parse(localStorage.getItem('user'))
+                fetch(`http://localhost:4000/v1/category/${id}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${localStorageData.token}`
+                    },
+                    body: JSON.stringify({
+                        title: result ,
+                        name : result
+                    })
+                })
+                    .then(res => res.json())
+                    .then(result => {
+                        swal({
+                            title: "ویرایش با موفقیت انجام شد",
+                            icon: 'success',
+                            buttons: 'تایید'
+                        }).then(() => {
+                            refreshCategory()
+                        })
+                    })
+            }
+        })
     }
     return (
         <div>
@@ -169,7 +197,7 @@ export default function Category() {
                                     <td className="px-4 py-4 text-center text-[1.1rem]">{index + 1}</td>
                                     <td className="px-4 py-4 text-center text-[1.1rem]">{category.title}</td>
                                     <td className="text-center">
-                                        <button className="bg-blue-600 hover:bg-blue-700 text-white text-[1.1rem] px-3 py-1 rounded-md transition">
+                                        <button className="bg-blue-600 hover:bg-blue-700 text-white text-[1.1rem] px-3 py-1 rounded-md transition" onClick={() => updateCategory(category._id)}>
                                             ویرایش
                                         </button>
                                     </td>

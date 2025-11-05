@@ -19,7 +19,7 @@ export default function CourseBox(props) {
                 <div className="bg-white shadow-[0_0_19px_rgba(168,172,185,0.3)] rounded-2xl my-8 transition-all duration-400 ease-in-out hover:-translate-y-2.5">
                     <Link to={`/course-info/${props.shortName}`}>
                         <img
-                            src={props.cover}
+                            src={`http://localhost:4000/courses/covers/${props.cover}`}
                             alt="Course img"
                             className="w-full rounded-t-2xl"
                             onLoad={loaderHandler}
